@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <h2 class="titulo-panel">
+       Sistema de Riego Automático
+      </h2>      
+        
+    <div class="card my-3">
+      <div class="card-body">
+        <h5>Lecturas Sensoriales</h5>
+        <p>
+          Temperatura: 
+          <strong [class.text-success]="tempNormal" [class.text-danger]="!tempNormal">
+            {{ temperatura !== null && temperatura !== undefined ? temperatura : '--' }} °C
+          </strong>          
+          
+        </p>
+        <p>Humedad del Aire: {{ humedadAire !== null && humedadAire !== undefined ? humedadAire : '--' }} %</p>
+        <p>Suelo Seco: <strong>{{ sueloSeco ? 'Sí' : 'No' }}</strong></p>
+        <p>Nivel de Agua: <strong>{{ nivelAguaArriba ? 'Agua arriba (LOW)' : 'Agua abajo (HIGH)' }}</strong></p>
+      </div>
+    </div>
+  
+    <div class="card my-3">
+      <div class="card-body">
+        <h5>Estado de Actuadores</h5>
+        <p>
+          Bomba de Riego: 
+          <span class="badge" 
+            [class.bg-success]="bombaEncendida" 
+            [class.bg-danger]="!bombaEncendida">
+            {{ bombaEncendida ? 'Encendida' : 'Apagada' }}
+          </span>
+        </p>
+        </div>
+    </div>
+  
+    <div class="card my-3">
+      <div class="card-body">
+        <h5>Controles Manuales (simulación)</h5>
+        <button class="btn btn-outline-primary me-2" (click)="toggleSuelo()">
+          {{ sueloSeco ? 'Marcar Suelo como Húmedo' : 'Marcar Suelo como Seco' }}
+        </button>
+        <button class="btn btn-outline-primary" (click)="toggleNivelAgua()">
+          {{ nivelAguaArriba ? 'Marcar Nivel Agua como Bajo' : 'Marcar Nivel Agua como Alto' }}
+        </button>
+      </div>
+    </div>
+  </div>
+  
